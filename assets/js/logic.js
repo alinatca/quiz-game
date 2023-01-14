@@ -12,6 +12,23 @@ var currentQuestionIndex = 0;
 var time = questions.length * 15;
 var timerId;
 
+function startQuiz() {
+  // hide start screen
+  var startScreenEl = document.getElementById("start-screen");
+  startScreenEl.setAttribute("class", "hide");
+
+  // un-hide questions 
+  questionsEl.removeAttribute("class");
+
+  // start the timer
+  timerId = setInterval(clockTick, 1000);
+
+  // show time
+  timerEl.textContent = time;
+
+  getQuestion();
+}
+
 function getQuestion() {
     // get current question object from array
     var currentQuestion = questions[currentQuestionIndex];
