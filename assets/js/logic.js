@@ -92,3 +92,30 @@ function getQuestion() {
     getQuestion();
   }
 }
+
+function quizEnd() {
+  // stop the timer
+  clearInterval(timerId);
+
+  // show the end screen
+  var endScreenEl = document.getElementById("end-screen");
+  endScreenEl.removeAttribute("class");
+
+  // final score
+  var finalScoreEl = document.getElementById("final-score");
+  finalScoreEl.textContent = time;
+
+  // hide questions
+  questionsEl.setAttribute("class", "hide");
+}
+
+function clockTick() {
+  // update the time
+  time--;
+  timerEl.textContent = time;
+
+  // check if user ran out of time
+  if (time <= 0) {
+    quizEnd();
+  }
+}
