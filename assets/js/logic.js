@@ -56,3 +56,39 @@ function getQuestion() {
       choicesEl.appendChild(choiceNode);
     });
   }
+
+  function questionClick() {
+  // check if answer is wrong
+  if (this.value !== questions[currentQuestionIndex].answer) {
+    // create penalize time
+    time -= 15;
+
+    if (time < 0) {
+      time = 0;
+    }
+    // new time 
+    timerEl.textContent = time;
+    feedbackEl.textContent = "Wrong!";
+    feedbackEl.style.color = "red";
+    feedbackEl.style.fontSize = "400%";
+  } else {
+    feedbackEl.textContent = "Correct!";
+    feedbackEl.style.color = "green";
+    feedbackEl.style.fontSize = "400%";
+  }
+  // flash right/wrong feedback
+  feedbackEl.setAttribute("class", "feedback");
+  setTimeout(function() {
+    feedbackEl.setAttribute("class", "feedback hide");
+  }, 1000);
+
+  // next question
+  currentQuestionIndex++;
+
+  // time checker
+  if (currentQuestionIndex === questions.length) {
+    quizEnd();
+  } else {
+    getQuestion();
+  }
+}
