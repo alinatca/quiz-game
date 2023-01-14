@@ -14,6 +14,12 @@ var questions = [
     {title:"JavaScript is a ___ -side programming language.",
     choices: ["Client", "Server", "Both", "None"],
     answer:"Both"
+    },
+
+    {title:"Which of the following keywords is used to define a variable in Javascript?",
+    choices: ["var", "let", "Both A and B", "None"],
+    answer:"Both A and B"
     }
+    
     
     ];
